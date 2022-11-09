@@ -68,7 +68,7 @@ class FicheDePaie
     {
         return $this->idFp;
     }
-//test²
+
     public function getIdPer(): ?int
     {
         return $this->idPer;
