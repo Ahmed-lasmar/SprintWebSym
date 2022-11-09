@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Conge{% endblock %}
+
+{% block body %}
+    <h1>Edit Conge</h1>
+
+    {{ include('conge/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_conge_index') }}">back to list</a>
+
+    {{ include('conge/_delete_form.html.twig') }}
+{% endblock %}
