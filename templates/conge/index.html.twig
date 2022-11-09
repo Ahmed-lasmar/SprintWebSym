@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conge index{% endblock %}
+
+{% block body %}
+    <h1>Conge index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcon</th>
+                <th>Idper</th>
+                <th>Ddepot</th>
+                <th>Typedemande</th>
+                <th>Etatdemande</th>
+                <th>Ddepart</th>
+                <th>Dretour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+            <tr>
+                <td>{{ conge.idcon }}</td>
+                <td>{{ conge.idper }}</td>
+                <td>{{ conge.ddepot ? conge.ddepot|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.typedemande }}</td>
+                <td>{{ conge.etatdemande }}</td>
+                <td>{{ conge.ddepart ? conge.ddepart|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.dretour ? conge.dretour|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_conge_show', {'idcon': conge.idcon}) }}">show</a>
+                    <a href="{{ path('app_conge_edit', {'idcon': conge.idcon}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_conge_new') }}">Create new</a>
+{% endblock %}
