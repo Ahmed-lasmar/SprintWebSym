@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prime index{% endblock %}
+
+{% block body %}
+    <h1>Prime index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPrime</th>
+                <th>TypePrime</th>
+                <th>ValeurPrime</th>
+                <th>DatePrime</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prime in primes %}
+            <tr>
+                <td>{{ prime.idPrime }}</td>
+                <td>{{ prime.typePrime }}</td>
+                <td>{{ prime.valeurPrime }}</td>
+                <td>{{ prime.datePrime ? prime.datePrime|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_prime_show', {'idPrime': prime.idPrime}) }}">show</a>
+                    <a href="{{ path('app_prime_edit', {'idPrime': prime.idPrime}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_prime_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Formatteur{% endblock %}
+
+{% block body %}
+    <h1>Edit Formatteur</h1>
+
+    {{ include('formatteur/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_formatteur_index') }}">back to list</a>
+
+    {{ include('formatteur/_delete_form.html.twig') }}
+{% endblock %}
