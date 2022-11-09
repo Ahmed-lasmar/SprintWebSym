@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formatteur{% endblock %}
+
+{% block body %}
+    <h1>Formatteur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdFormatteur</th>
+                <td>{{ formatteur.idFormatteur }}</td>
+            </tr>
+            <tr>
+                <th>Horaire</th>
+                <td>{{ formatteur.horaire }}</td>
+            </tr>
+            <tr>
+                <th>Specialite</th>
+                <td>{{ formatteur.specialite }}</td>
+            </tr>
+            <tr>
+                <th>Membres</th>
+                <td>{{ formatteur.membres }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_formatteur_index') }}">back to list</a>
+
+    <a href="{{ path('app_formatteur_edit', {'idFormatteur': formatteur.idFormatteur}) }}">edit</a>
+
+    {{ include('formatteur/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Postule{% endblock %}
+
+{% block body %}
+    <h1>Postule</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdPost</th>
+                <td>{{ postule.idPost }}</td>
+            </tr>
+            <tr>
+                <th>IdCan</th>
+                <td>{{ postule.idCan }}</td>
+            </tr>
+            <tr>
+                <th>IdOff</th>
+                <td>{{ postule.idOff }}</td>
+            </tr>
+            <tr>
+                <th>DatePost</th>
+                <td>{{ postule.datePost ? postule.datePost|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EtatPost</th>
+                <td>{{ postule.etatPost }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_postule_index') }}">back to list</a>
+
+    <a href="{{ path('app_postule_edit', {'idPost': postule.idPost}) }}">edit</a>
+
+    {{ include('postule/_delete_form.html.twig') }}
+{% endblock %}
