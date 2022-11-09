@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Postule index{% endblock %}
+
+{% block body %}
+    <h1>Postule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPost</th>
+                <th>IdCan</th>
+                <th>IdOff</th>
+                <th>DatePost</th>
+                <th>EtatPost</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for postule in postules %}
+            <tr>
+                <td>{{ postule.idPost }}</td>
+                <td>{{ postule.idCan }}</td>
+                <td>{{ postule.idOff }}</td>
+                <td>{{ postule.datePost ? postule.datePost|date('Y-m-d') : '' }}</td>
+                <td>{{ postule.etatPost }}</td>
+                <td>
+                    <a href="{{ path('app_postule_show', {'idPost': postule.idPost}) }}">show</a>
+                    <a href="{{ path('app_postule_edit', {'idPost': postule.idPost}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_postule_new') }}">Create new</a>
+{% endblock %}

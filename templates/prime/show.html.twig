@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prime{% endblock %}
+
+{% block body %}
+    <h1>Prime</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdPrime</th>
+                <td>{{ prime.idPrime }}</td>
+            </tr>
+            <tr>
+                <th>TypePrime</th>
+                <td>{{ prime.typePrime }}</td>
+            </tr>
+            <tr>
+                <th>ValeurPrime</th>
+                <td>{{ prime.valeurPrime }}</td>
+            </tr>
+            <tr>
+                <th>DatePrime</th>
+                <td>{{ prime.datePrime ? prime.datePrime|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_prime_index') }}">back to list</a>
+
+    <a href="{{ path('app_prime_edit', {'idPrime': prime.idPrime}) }}">edit</a>
+
+    {{ include('prime/_delete_form.html.twig') }}
+{% endblock %}
