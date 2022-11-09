@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDePaie{% endblock %}
+
+{% block body %}
+    <h1>FicheDePaie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdFp</th>
+                <td>{{ fiche_de_paie.idFp }}</td>
+            </tr>
+            <tr>
+                <th>IdPer</th>
+                <td>{{ fiche_de_paie.idPer }}</td>
+            </tr>
+            <tr>
+                <th>SalaireInit</th>
+                <td>{{ fiche_de_paie.salaireInit }}</td>
+            </tr>
+            <tr>
+                <th>IdPrime</th>
+                <td>{{ fiche_de_paie.idPrime }}</td>
+            </tr>
+            <tr>
+                <th>SalaireTotal</th>
+                <td>{{ fiche_de_paie.salaireTotal }}</td>
+            </tr>
+            <tr>
+                <th>DatePaiement</th>
+                <td>{{ fiche_de_paie.datePaiement ? fiche_de_paie.datePaiement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EtatPaiement</th>
+                <td>{{ fiche_de_paie.etatPaiement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_de_paie_index') }}">back to list</a>
+
+    <a href="{{ path('app_fiche_de_paie_edit', {'idFp': fiche_de_paie.idFp}) }}">edit</a>
+
+    {{ include('fiche_de_paie/_delete_form.html.twig') }}
+{% endblock %}

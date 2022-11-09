@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe index{% endblock %}
+
+{% block body %}
+    <h1>Employe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPer</th>
+                <th>DateEmbauche</th>
+                <th>Grade</th>
+                <th>Equipe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.idPer }}</td>
+                <td>{{ employe.dateEmbauche ? employe.dateEmbauche|date('Y-m-d') : '' }}</td>
+                <td>{{ employe.grade }}</td>
+                <td>{{ employe.equipe }}</td>
+                <td>
+                    <a href="{{ path('app_employe_show', {'idPer': employe.idPer}) }}">show</a>
+                    <a href="{{ path('app_employe_edit', {'idPer': employe.idPer}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employe_new') }}">Create new</a>
+{% endblock %}
