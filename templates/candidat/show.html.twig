@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidat{% endblock %}
+
+{% block body %}
+    <h1>Candidat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdCan</th>
+                <td>{{ candidat.idCan }}</td>
+            </tr>
+            <tr>
+                <th>UrlCv</th>
+                <td>{{ candidat.urlCv }}</td>
+            </tr>
+            <tr>
+                <th>DPost</th>
+                <td>{{ candidat.dPost ? candidat.dPost|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Competence</th>
+                <td>{{ candidat.competence }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_candidat_index') }}">back to list</a>
+
+    <a href="{{ path('app_candidat_edit', {'idCan': candidat.idCan}) }}">edit</a>
+
+    {{ include('candidat/_delete_form.html.twig') }}
+{% endblock %}

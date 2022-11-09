@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDePaie index{% endblock %}
+
+{% block body %}
+    <h1>FicheDePaie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdFp</th>
+                <th>IdPer</th>
+                <th>SalaireInit</th>
+                <th>IdPrime</th>
+                <th>SalaireTotal</th>
+                <th>DatePaiement</th>
+                <th>EtatPaiement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_de_paie in fiche_de_paies %}
+            <tr>
+                <td>{{ fiche_de_paie.idFp }}</td>
+                <td>{{ fiche_de_paie.idPer }}</td>
+                <td>{{ fiche_de_paie.salaireInit }}</td>
+                <td>{{ fiche_de_paie.idPrime }}</td>
+                <td>{{ fiche_de_paie.salaireTotal }}</td>
+                <td>{{ fiche_de_paie.datePaiement ? fiche_de_paie.datePaiement|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_de_paie.etatPaiement }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_de_paie_show', {'idFp': fiche_de_paie.idFp}) }}">show</a>
+                    <a href="{{ path('app_fiche_de_paie_edit', {'idFp': fiche_de_paie.idFp}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_de_paie_new') }}">Create new</a>
+{% endblock %}
