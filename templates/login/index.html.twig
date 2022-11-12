@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .login {
+        margin-left: 4em;
+        margin-right: 4em;
+        margin-bottom: 3em;
+        padding: 0.5em;
+
+    }
+    input {
+        margin-bottom: 0.5em;
+    }
+</style>
+    <div class="login">
+
+        <h1>Login</h1>
+
+        {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+        <table>
+
+            <tr>
+                <td>
+                    {{ form_label(form.email) }}
+                </td>
+                <td>
+                    {{ form_widget(form.email) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(form.mdp) }}
+                </td>
+                <td>
+                    {{ form_widget(form.mdp) }}
+                </td>
+            </tr>
+
+        </table>
+        {{ form_end(form) }}
+
+
+    </div>
+{% endblock %}
