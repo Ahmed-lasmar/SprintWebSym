@@ -20,9 +20,7 @@ class LoginController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()){
-            $em=$doctrine->getManager();
-            $em->persist($user);
-            $em->flush();
+
         }
         return $this->render('login/index.html.twig', [
             'form' => $form->createView(),
