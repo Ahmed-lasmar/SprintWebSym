@@ -13,4 +13,9 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig');
     }
+    #[Route('/db', name: 'app_db')]
+    public function db(): Response
+    {
+        return $this->render('DBbase.html.twig');
+    }
 }
