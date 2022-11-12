@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>testAdminLTE 3 | Dashboard</title>
+    <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
     <!-- Google Font: Source Sans Pro -->
     <link  href={{ asset("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback")}} rel="stylesheet">
@@ -860,7 +860,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href={{ asset("#")}}>Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
+                            <li class="breadcrumb-item active">{% block pageName %}Welcome!{% endblock %}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

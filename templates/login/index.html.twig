@@ -11,6 +11,7 @@
         margin-right: 4em;
         margin-bottom: 3em;
         padding: 0.5em;
+
     }
     input {
         margin-bottom: 0.5em;
@@ -20,7 +21,32 @@
 
         <h1>Login</h1>
 
-        {{ form(form) }}
+        {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+        <table>
+
+            <tr>
+                <td>
+                    {{ form_label(form.email) }}
+                </td>
+                <td>
+                    {{ form_widget(form.email) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(form.mdp) }}
+                </td>
+                <td>
+                    {{ form_widget(form.mdp) }}
+                </td>
+            </tr>
+
+        </table>
+        {{ form_end(form) }}
 
 
     </div>

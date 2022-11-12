@@ -18,6 +18,7 @@ class LoginController extends AbstractController
         $user=new User();
         $form=$this->createForm(LoginType::class,$user );
         $form->handleRequest($request);
+
         if ($form->isSubmitted()){
             $em=$doctrine->getManager();
             $em->persist($user);
