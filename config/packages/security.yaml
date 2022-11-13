@@ -24,14 +24,13 @@ security:
             security: false
         main:
             lazy: true
-            entry_point: App\Security\LoginFormAuthAuthenticator
-            pattern: ^/
-            http_basic: ~
-            provider: our_db_provider
-            custom_authenticator: App\Security\LoginFormAuthAuthenticator
+            provider: app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthAuthenticator
             logout:
                 path: app_logout
-                target: /
+                target: /login
                 # where to redirect after logout
                 # target: app_any_route
 
