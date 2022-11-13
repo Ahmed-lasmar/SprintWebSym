@@ -10,8 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity
+ * @method string getUserIdentifier()
  */
-class User
+class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
     /**
      * @var int
@@ -74,28 +75,28 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_embauche", type="date", nullable=false)
+     * @ORM\Column(name="Date_embauche", type="date", nullable=true)
      */
     private $dateEmbauche;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Grade", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Grade", type="string", length=255, nullable=true)
      */
     private $grade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Equipe", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Equipe", type="string", length=255, nullable=true)
      */
     private $equipe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Role", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Role", type="string", length=255, nullable=true)
      */
     private $role;
 
@@ -256,4 +257,33 @@ class User
     }
 
 
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+    }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function __call(string $name, array $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
+    }
 }
