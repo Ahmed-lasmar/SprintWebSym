@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity
- * @method string getUserIdentifier()
  */
 class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
@@ -107,6 +106,18 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
      */
     private $mdp;
 
+    /**
+     * @param int $iduser
+     */
+    public function setIduser(int $iduser): void
+    {
+        $this->iduser = $iduser;
+    }
+    public function getUserIdentifier(): ?string
+    {
+        return $this->iduser;
+    }
+
     public function getIduser(): ?int
     {
         return $this->iduser;
@@ -184,6 +195,9 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
         return $this;
     }
 
+
+
+
     public function getNumTel(): ?string
     {
         return $this->numTel;
@@ -257,19 +271,27 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
     }
 
 
-    public function getPassword()
+    public function getPassword(): string
     {
-        // TODO: Implement getPassword() method.
+        return (string)$this->mdp;
     }
 
-    public function getRoles()
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
+        $roles = $this->role;
+        // guarantee every user at least has ROLE_USER
+        $roles =[];
+        $roles = 'ROLE_USER';
+
+        return array_unique((array)$roles);
     }
 
-    public function getSalt()
+    public function getSalt(): ?string
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     public function eraseCredentials()
