@@ -53,9 +53,9 @@ class Application
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="date", type="date", nullable=false)
      */
-    private $date = 'CURRENT_TIMESTAMP';
+    private $date ;
 
     public function getIdApp(): ?int
     {
