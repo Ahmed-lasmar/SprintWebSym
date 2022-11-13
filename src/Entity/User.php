@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
     /**
      * @var int
@@ -74,28 +74,28 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Date_embauche", type="date", nullable=false)
+     * @ORM\Column(name="Date_embauche", type="date", nullable=true)
      */
     private $dateEmbauche;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Grade", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Grade", type="string", length=255, nullable=true)
      */
     private $grade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Equipe", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Equipe", type="string", length=255, nullable=true)
      */
     private $equipe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Role", type="string", length=255, nullable=false)
+     * @ORM\Column(name="Role", type="string", length=255, nullable=true)
      */
     private $role;
 
@@ -105,6 +105,18 @@ class User
      * @ORM\Column(name="mdp", type="string", length=255, nullable=false)
      */
     private $mdp;
+
+    /**
+     * @param int $iduser
+     */
+    public function setIduser(int $iduser): void
+    {
+        $this->iduser = $iduser;
+    }
+    public function getUserIdentifier(): ?string
+    {
+        return $this->iduser;
+    }
 
     public function getIduser(): ?int
     {
@@ -183,6 +195,9 @@ class User
         return $this;
     }
 
+
+
+
     public function getNumTel(): ?string
     {
         return $this->numTel;
@@ -256,4 +271,41 @@ class User
     }
 
 
+    public function getPassword(): string
+    {
+        return (string)$this->mdp;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->role;
+        // guarantee every user at least has ROLE_USER
+        $roles =[];
+        $roles = 'ROLE_USER';
+
+        return array_unique((array)$roles);
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function __call(string $name, array $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
+    }
 }
