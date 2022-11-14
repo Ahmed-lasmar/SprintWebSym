@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\FicheDePaieRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,8 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="fiche_de_paie")
  * @ORM\Entity
  */
-#[ORM\Entity(repositoryClass: FicheDePaieRepository::class)]
-
 class FicheDePaie
 {
     /**
