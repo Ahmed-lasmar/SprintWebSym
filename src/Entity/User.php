@@ -281,10 +281,10 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->role;
+
         // guarantee every user at least has ROLE_USER
         $roles =[];
-        $roles = 'ROLE_USER';
+        $roles = $this->role;
 
         return array_unique((array)$roles);
     }
@@ -301,7 +301,7 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->nom;
     }
 
     public function __call(string $name, array $arguments)
